@@ -1,0 +1,29 @@
+type Author {
+    id: Int!
+    firstName: String!
+    lastName: String!
+    patronymic: String!
+    books: [Book!]
+    countBooks: Int!
+}
+
+input AuthorsFilter {
+    countBooks: Int
+    minCountBooks: Int
+    maxCountBooks: Int
+    firstName: String
+    lastName: String
+    patronymic: String
+}
+
+input CreateAuthorInput {
+    firstName: String!
+    lastName: String!
+    patronymic: String!
+}
+
+input EditAuthorInput {
+    firstName: String
+    lastName: String
+    patronymic: String
+}

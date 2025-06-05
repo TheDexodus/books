@@ -1,0 +1,28 @@
+type Book {
+    id: Int!
+    name: String!
+    description: String!
+    publishYear: Int!
+    authors: [Author!]
+}
+
+input BooksFilter {
+    name: String
+    description: String
+    publishYear: Int
+    minPublishYear: Int
+    maxPublishYear: Int
+}
+
+input CreateBookInput {
+    name: String!
+    description: String!
+    authorsIds: [Int!]!
+}
+
+
+input EditBookInput {
+    name: String
+    description: String
+    authorsIds: [Int!]
+}

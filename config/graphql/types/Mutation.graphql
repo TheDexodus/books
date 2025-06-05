@@ -1,0 +1,9 @@
+type Mutation {
+    createAuthor(input: CreateAuthorInput!): Author!
+    editAuthor(id: Int!, input: EditAuthorInput!): Author
+    deleteAuthor(id: Int!, force: Boolean): Boolean
+
+    createBook(input: CreateBookInput!): Book!
+    editBook(id: Int!, input: EditBookInput!): Book
+    deleteBook(id: Int!): Boolean!
+}

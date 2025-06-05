@@ -1,0 +1,38 @@
+services:
+  database:
+    image: mysql:9.3
+    ports:
+      - "$DATABASE_PORT:3306"
+    environment:
+      MYSQL_DATABASE: books
+      MYSQL_USER: books
+      MYSQL_PASSWORD: books
+      MYSQL_ROOT_PASSWORD: books_root_password
+    volumes:
+      - database_data:/var/lib/mysql:rw
+
+  php:
+    build:
+      dockerfile: docker/php/dev.Dockerfile
+      context: .
+    expose:
+      - 9000
+    environment:
+      XDEBUG_CONFIG: client_host=${XDEBUG_REMOTE_HOST} client_port=${XDEBUG_REMOTE_PORT}
+      PHP_IDE_CONFIG: serverName=${XDEBUG_IDE_SERVER_NAME}
+    volumes:
+      - ./:/srv/app
+
+  php-nginx:
+    build:
+      dockerfile: docker/nginx/dev.Dockerfile
+      context: .
+    ports:
+      - "$APPLICATION_PORT:80"
+    volumes:
+      - ./:/srv/app
+    depends_on:
+      - php
+
+volumes:
+  database_data:
