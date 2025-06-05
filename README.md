@@ -13,6 +13,13 @@ docker-compose exec php doctrine:migrations:migrate
 docker-compose exec php doctrine:fixtures:load -n
 ```
 
+#### Run tests
+```shell
+docker-compose exec php bin/console doctrine:database:create --env=test
+docker-compose exec php bin/console doctrine:migrations:migrate --env=test
+docker-compose exec php bin/console doctrine:fixtures:load -n --env=test
+docker-compose exec php bin/phpunit
+```
 
 ### Examples
 

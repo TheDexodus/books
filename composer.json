@@ -79,6 +79,9 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^4.1",
-        "overblog/graphiql-bundle": "^1.0"
+        "overblog/graphiql-bundle": "^1.0",
+        "phpunit/phpunit": "^12.1",
+        "symfony/browser-kit": "7.3.*",
+        "symfony/css-selector": "7.3.*"
     }
 }
